@@ -1,0 +1,29 @@
+<section>
+    <!-- <pre>{{stocks |json}}</pre> -->
+    <hr/>
+    <!-- using structural directives -->
+    <ul>
+        <li *ngFor="let stock of stocks">{{stock}}</li>
+    </ul>
+
+    <!-- remember: to use ngModel you MUST have FormsModule in NgModule -->
+    <select [(ngModel)]="selectedStock">
+        <option disabled selected>pick a stock</option>
+        <option *ngFor="let stock of stocks">{{stock}}</option>
+    </select>
+    <p>you chose {{selectedStock}}</p>
+    <hr/>
+    <button (click)="toggleCalc()" >
+        <!-- ECMAScript has a 'ternary operator' logic?t:f -->
+        {{toggleFlag?'Hide':'Show'}} Calulator</button>
+    <!-- structural directive *ngIf will instantiate or remove content -->
+    <!-- <aside *ngIf="toggleFlag"> -->
+    <!-- in this case its more efficient to use... -->
+    <aside [hidden]="!toggleFlag">
+    
+        <input type="number" min="1" [(ngModel)]="qty" placeholder="quantity"/>
+        <input type="number" min="1" [(ngModel)]="price" placeholder="price" />
+        <!-- or we could have a (change) handler for the fields -->
+        {{qty * price}}
+    </aside>
+</section>

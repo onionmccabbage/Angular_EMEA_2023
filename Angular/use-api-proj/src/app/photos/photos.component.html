@@ -1,0 +1,10 @@
+<section>
+    <!-- <pre>{{photos |json}}</pre> -->
+    <ul>
+        <li *ngFor="let photo of photos">
+            Title {{photo['title']}}
+            ID {{photo['id']}} Album ID {{photo['albumId']}} URL {{photo['thumbnailUrl']}}
+            <img [src]="photo['thumbnailUrl']" [alt]="photo['title']" [title]="photo['title']"/>
+        </li>
+    </ul>
+</section>

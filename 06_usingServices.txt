@@ -1,0 +1,101 @@
+Angular Services
+================
+A service is used to interact with APIs. 
+All services are decorated with @Injectable which means they are available to all components
+They have no template since they do not have concerns about how data is displayed
+We will
+- make a new project
+- architect it with components
+- add a service
+In this project, the user will be able to select a category and an id from https://jsonplaceholder.typicode.com
+Then the service will use the specified category and id to retrieve some JSON
+We show the retrieved JSON on the page
+
+Services require us to use some Typescript
+- https://www.typescriptlang.org/
+
+First we need a new project (with no routing)
+- ng new use-api-proj
+- cd use-api-proj (remember to change into the new project folder)
+Then we need a component
+ng g c photos
+Open app.component.html and delete everything
+Then add some structure and an instance of our 'my-form' component
+    <article>
+        <section>
+            <app-photos></app-photos>
+        </section>
+    </article>
+
+Next we need to generate a service called 'typicode'
+- ng generate service typicode  (or ng g s typicode)
+You now have a file called 'typicode-service.ts' so open it and take a look
+All services are decorated with @Injectable
+The purpose of our service will be to communicate with an API end-point
+See https://angular.io/guide/http-server-communication
+In this case we will use the free API at https://jsonplaceholder.typicode.com
+It lets us specify a category and an id then returns a load of JSON
+In order for Angular to communicate over HTTP we must configure something in NgModule:
+- Open app.module.ts (this is the NgModule for our project)
+- Edit the imports array so it reads:
+    BrowserModule, HttpClientModule, FormsModule
+   (We also added the FormsModule so we can use form fields in Angular)
+Make sure the HttpClientModule and FormsModule are correctly imported at the top of this file
+- at the top it should say:
+    import { FormsModule } from '@angular/forms';
+    import { HttpClientModule } from '@angular/common/http';
+We have now provided the tools for Angular to interact with external APIs over HTTP
+In particular, we will be able to use 'HttpClient' in our service
+We are now ready to start implementing methods of our (client-side) service
+Return to typicode.service.ts
+The conventional way to enable a service to use Http is
+    constructor(private http: HttpClient) { }
+That will instantiate the Angular 'HttpClient' as a variable called 'http' (or whatever you want to call it)
+We can now use it in methods. Inside the TypicodeService class write:
+  apiUrl = `https://jsonplaceholder.typicode.com`
+  getAllPhotos(){
+      try {
+        return this.http.get(`${this.apiUrl}/photos`)
+      }
+      catch (err) {
+        return new Observable()
+      }
+  } 
+You will need to make sure Angular imports 'Observable' from 'rxjs'
+    import { Observable } from 'rxjs';
+Now we can use this method of our service
+Return to photos.component.ts
+- add a property ccalled 'photos' which is an empty array
+    photos = []
+- add a constructor which instantiates our service
+    constructor(private typicode:TypicodeService){}
+- add a method called 'handlePhotos' which will populate the array with the data from the service
+    handlePhotos(){
+        return (received:any)=>{
+            this.photos = received
+        }
+    }
+- add an 'ngOnInit' method which calls our 'handlePhotos' method when the component first loads
+    ngOnInit(){
+        this.typicode.getAllPhotos()
+            .subscribe( this.handlePhotos() )
+    }
+We need to show the photos array in the photos template
+- open photos.component.html
+- add some basic html
+    <section>
+        <pre>{{photos |json}}</pre>
+    </section>
+Run the app and enjoy the data
+    ng serve (then open a browser at http://localhost:4200)
+
+For a better view of the data, change the template like this:
+    <section>
+        <ul>
+            <li *ngFor="let photo of photos">
+                Title {{photo['title']}}
+                ID {{photo['id']}} Album ID {{photo['albumId']}} URL {{photo['thumbnailUrl']}}
+                <img [src]="photo['thumbnailUrl']" [alt]="photo['title']" [title]="photo['title']"/>
+            </li>
+        </ul>
+    </section>

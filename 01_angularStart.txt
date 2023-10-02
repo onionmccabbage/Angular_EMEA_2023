@@ -1,0 +1,24 @@
+Angular
+=======
+In a terminal window, do this ONCE to install Angular command-line-interface (cli):
+    npm install -g @angular/cli
+Then you can use cli instructions and Angular will know what to do
+To create a new Angular project:
+   ng new first-proj  
+   (it offers some choices, this time say 'No' to routing and accept the others)
+Then watch as Angular downloads a bunch of stuff into a folder called 'first-proj'
+It might take a good while, but when it's finished, change directory into your new project:
+    cd first-proj   
+There will be a load of assets in 'node_modules'
+Your work will go in 'src/app'
+Then get your new project running in development mode:
+    ng serve  
+This is a 'watching server' so any chages to your code are reflected in the browser.
+By default it's always localhost:4200
+From here on, your workflow is: make code edits, see results in browser, repeat
+The default Angular application includes links to documentation, DevTools and some cli statements
+
+Points to note: 
+- Angular uses 'TypeScript' rather than 'ECMAScript'
+- You can mostly ignore this fact, except in a few specific cases
+- e.g. using Angular events. We will deal with when we get to it

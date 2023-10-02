@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="monitor">watch here...</p>
+
+    <style>
+        body {background-color: #000;}
+        p { color: red; }
+        .wibble { color: yellow; }
+        #doobiedoo { color: green; }
+    </style>
+    <hr />
+    <p>this text will be red (true)</p>
+    <p class='wibble'>This text will be yellow (true)</p>
+    <p class='wibble'>This text will be green (false)</p>
+    <p id='doobiedoo'>This text will be green (true)</p>
+    <p id='doobiedoo'>This text will be red (false)</p>
+    <p id='doobiedoo' class='wibble'>This text will be green (true)</p>
+    <hr/>
+    <img mg src='mouse.png' alt='small rodent' title='computer pointing device' />
+</body>
+
+<script>
+    // q
+    {
+        const fnA = x => x * x
+        const fnB = (x) => { x * x }
+        const fnC = (x) => { return x * x }
+        function fnD(x) { return x * x }
+        monitor.innerHTML = `
+        A:${fnA(2)} B:${fnB(2)} C:${fnC(2)} D:${fnD(2)}
+        <br/>`
+    }
+    // q
+    {
+        const x = 'ABCD'; let y = `The answer is ${x[1]}`
+        monitor.innerHTML += `
+        ${y}
+        <br/>`
+    }
+    // q
+    {
+        // let colorsA = {"red", "green", "blue"};
+        // let colorsB = (1:"red", 2:"green", 3:"blue");
+        let colorsC = ("red", "green", "blue");
+        let colorsD = ["red", "green", "blue"];
+        monitor.innerHTML += `
+        colorsD is an Array: ${Array.isArray(colorsD)}
+        <br/>`
+
+    }
+    // q
+    {
+        let x = 5; x = true;
+        monitor.innerHTML += `
+        Value of x is ${x}
+        <br/>`
+    }
+    {
+        number.setAttribute()
+    }
+</script>
+</body>
+
+</html>

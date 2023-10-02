@@ -1,0 +1,27 @@
+<!-- <app-header></app-header> -->
+<article>
+  <h2>{{title}}</h2>
+  <form #myForm='ngForm'>
+    Category: 
+    <select [(ngModel)]='category' id="frmCat" name="frmCat" #frmCat>
+      <option *ngFor="let val of dd">{{val.v}}</option>
+    </select>
+    Number: 
+    <input [(ngModel)]='num' type="range" 
+      id="frmItemNum" name="frmItemNum" #frmItemNum
+      placeholder="number" required min="1" max="5" />{{num}}
+  </form>
+  <h3>Status: {{statusObj.status}}</h3>
+  <h4>last updated: {{statusObj.timestamp|date:'hh:mm:ss'}}</h4>
+  <aside>
+    <button (click)='showHistory=!showHistory' [hidden]='searchHistory.length==0'>toggle historical searches</button><br/>
+    <ul [hidden]='!showHistory'>
+      <li *ngFor='let item of searchHistory'>Category:{{item.category}} Number:{{item.num}} time:{{item.ts |date:'hh:mm:ss'}}</li>
+    </ul>
+  </aside>
+  <hr/>
+  <!-- child component with two property inputs and one event output -->
+  <app-child (SWAPI_EVENT)='handleSwapiEvent($event)' 
+    [category]='category' 
+    [itemNum]='num'></app-child>
+  </article>

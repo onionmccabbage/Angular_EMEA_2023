@@ -1,0 +1,21 @@
+Angular Architecture
+====================
+Every Angular project is structured in a similar way
+Important files are:
+- main.ts (leave well alone)
+- index.html (not much to see here)
+Most of what you work on will be in first-proj/src
+- In the 'src/app' folder you find:
+    - app.module.ts (we do some configuration in here later)
+    - All your app lives inside app.component (.css .html .ts and .spec.ts)
+      ( .ts is for the ECMAScript .html is the template ) 
+Try this: 
+- delete EVERYTHING inside app.component.html
+- Then write some new template content, e.g.
+            <article>
+                <section>
+                    <h2>Angular</h2>
+                </section>
+            </article>
+- The browser now shows just your new template content
+- That's why you need to know about HTML (and CSS)

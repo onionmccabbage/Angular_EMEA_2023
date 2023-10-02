@@ -1,0 +1,13 @@
+<aside>
+    <!-- we can iterate over the 'porfolio' array -->
+    <ul>
+        <!-- *ngFor is a structural directive -->
+        <li *ngFor="let item of portfolio">{{item.ticker}} {{item.price | currency:'EUR'}}</li>
+    </ul>
+    <select>
+        <!-- we can include astatic option -->
+        <option selected disabled>Choose a ticker</option>
+        <option *ngFor="let item of portfolio">{{item.ticker}}</option>
+    </select>
+</aside>
+ 

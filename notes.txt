@@ -1,2 +1,0 @@
-Web Front End with Angular
-==========================

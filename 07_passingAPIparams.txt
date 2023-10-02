@@ -1,0 +1,78 @@
+Passing Arguments to the back-end API
+-------------------------------------
+We can add parameters to the API request. In this case, we will send a category and an id
+We will need a component for the user to enter data:
+- ng g c my-form
+Add an instance of <app-my-form> to app.component.html
+Delete all content from the template my-form.component.html
+Then write a nice form like this:
+
+    <form>
+        <label for="cats">Category: </label>
+        <select id="cats" name="cats" [(ngModel)]="category">
+            <option *ngFor="let cat of categories">{{cat}}</option>
+        </select> 
+        <label for="cat_id">ID: </label>
+        <input id="cat_id" name="cat_id" ngDebounce
+        [(ngModel)]="category_id"
+        placeholder="enter ID"
+        required
+        type="number" min="1" max="10" #cat_id="ngModel" />
+        <button (click)="handleForm()" >Go</button>
+    </form>
+
+We will want to see the returned data so for now, under the form write this:
+        <hr/>
+        <!-- use the JSON pipe for easy visualization -->
+        <pre>{{dataModel|json}}</pre>
+
+Now we need a method in the service. Inside typicode.service.ts add this method:
+  getCatAndId(cat: string, cat_id: number) {
+    if (typeof (cat) == 'string' && typeof (cat_id) == 'number') {
+      const urlCatId = `${this.apiUrl}/${cat}/${cat_id}`
+      // every Angular service should return an Observable
+      try {
+        return this.http.get(urlCatId) // Angular wll make sure this is an Observable
+      }
+      catch (err) {
+        return new Observable()
+      }
+    } else {
+      return new Observable() // we must return something
+    }
+  }
+Next we call this service method from the button on the form in the template
+Inside my-form.component.ts (see following code):
+- instantiate the service in the constructor
+- set some properties
+- write some methods
+
+    export class MyFormComponent {
+    // properties
+    categories = ['users', 'posts', 'albums', 'photos', 'todos']
+    category = this.categories[0]
+    category_id = 1
+    // we can make a TS Interface for our model
+    dataModel = {'name':'', 'thumbnailUrl':''}
+    // methods
+    constructor(private typicode:TypicodeService){}
+
+    // every component has lifecycle events
+    ngOnInit(){ // fires when the component is first rendered
+        this.handleForm()
+    }
+    
+    handleForm(){
+        this.typicode.getCatAndId(this.category, this.category_id)
+        .subscribe( this.handleReturnedData() )
+    }
+    
+    handleReturnedData(){
+        return (received:any)=>{
+        this.dataModel = received
+        }
+    }
+    }
+
+Now you can choose a category and an id then click the button to retrieve related data
+This example goes no further with rendering the returned data, but you could nicely present the data

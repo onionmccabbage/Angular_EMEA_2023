@@ -1,0 +1,6 @@
+<aside>
+    <dt>{{detail.ticker}}</dt>
+    <dd>Quantity: {{detail.qty}}</dd>
+    <dd>Price: {{detail.price | currency:'EUR'}}</dd>
+    <dd>Total Value: {{(detail.price * detail.qty) |currency:'EUR'}}</dd>
+</aside>

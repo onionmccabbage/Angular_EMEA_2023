@@ -1,0 +1,49 @@
+Angular Template Binding
+========================
+- Angular has it's own (neat) additions to HTML templating:
+    - one way interpolation binding into the template
+    - one way data binding into the template
+    - one way event binding out of the template
+    - two-way binding (used only where unavoidable)
+In your project, 'app.component.ts' by default has ONE property:
+- title = 'first-proj' (this is the 'state' of your component)
+{{}} is One Way Interpolation Binding (into a template):
+- You can bind ANY component property into the HTML template
+    - Inside app.component.html write <p>{{title}}</p>
+    - The browser now shows the value of the 'title' property
+    - Change the 'title' property and the browser shows the change
+    - Anything within {{}} will be evaluated
+    - Try {{1+2}}, the browser shows '3'
+[] is One Way Data Binding (into a template)
+- You can use any property as an attribute value within your HTML template
+    - Inside the class in app.component.ts write:
+        i = 'https://placekitten.com/120/64'
+        a = 'random kitten'
+    - Inside app.component.html write:
+        <img [src]=i [alt]=a />
+    - See the image in the browser
+() is One Way Event Binding (out of a template)
+- You can easily add event handlers such as (click)
+    - Inside the class in app.component.ts write an event handler function:
+        handleSomething(){console.log('event handled')}
+    - Inside app.component.html write:
+        <button (click)="handleSomething()">Feed Cats</button>
+    - See the browser console when you click the button
+[()] is Two Way Binding in and out of a template
+- This is less performant than one way binding
+- Often used for form field binding
+NB if you need to do anything with a form or form fields in Angular, 
+you must add the 'FormsModule' to app.module.ts
+    - Open app.module.ts
+    - Notice is it decorated with @NgModule
+    - Immediately after BrowserModule put a comma
+    - On the next line, type FormsModule and let it auto-complete (so it imports correctly)
+    - You will see import { FormsModule } from '@angular/forms' near the top of app.module.ts
+Here's an example using two-way binding:
+- Make sure you imported the FormsModule into app.module.ts
+- In app.component.html write
+    <input [(ngModel)]="catName" placeholder="Cat Name" required minlength="2" />
+    <br/><p>The cat is called {{catName}}</p>
+- In the class in app.component.ts write
+      catName = 'Mildred'
+- In the browser, edit the cat-name field and see it immediately echo back on the packages

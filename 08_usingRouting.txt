@@ -1,0 +1,17 @@
+Angular Routing
+===============
+Routing means showing mutually exclusive content within the SPA
+Typically users click links to show different content
+
+Start a project that will include routing:
+- ng new routed-proj
+- select 'y' when asked about routing
+- select defaults for all other options
+Take a look at the new project stucture:
+- you have an additional file called app-routing-module.ts
+- inside NgModule you see an import for the routing module
+
+To make routing work you need:
+- <router-outlet> where the routed content will appear
+- An array of routes inside app-routing-module
+- Some <a> tags so users can choose routes

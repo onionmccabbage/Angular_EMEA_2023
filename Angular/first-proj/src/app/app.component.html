@@ -1,0 +1,22 @@
+<article>
+  <section>
+      <h2>Angular</h2>
+      <p>{{title}}</p>
+    <hr>
+      <!-- if you pass data you MUST use $event -->
+      <app-child (evtAgree)="handleChildAgree($event)"></app-child>
+    <hr>
+
+      <img [src]=i [alt]=a [title]=t />
+      <hr/>
+      <button (click)="handleSomething()">Feed Cats</button>
+      <hr/>
+      <input [(ngModel)]="catName" placeholder="Cat Name" required minlength="2" />
+      <br/><p>The cat is called {{catName}}</p>
+      <hr>
+      <app-my-stocks></app-my-stocks>
+      <hr/>
+      <app-portfolio [portfolio]="portfolio" (item)="handleItem($event)"></app-portfolio>
+      <p>Selected data is {{receivedItem |json}}</p>
+  </section>
+</article>

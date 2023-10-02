@@ -1,0 +1,42 @@
+Using Angular Components
+========================
+Components let you split your Angular app into manageable parts
+- every component is decorated with @Component
+- every component must have an HTML template
+- encourages decoupling, encapsulation, re-use and unit testing
+To make a component appear in the Angular app:
+- use the 'selector' of the component as a tag inside app.component.html (or any other component)
+- e.g. open app.component.html and write <app-my-stocks></app-my-stocks>
+- Immediately, the component will appear in the browser as part of the page
+- Add properties to the .ts and content to the .html of the my-stocks component
+
+Structural Directives
+---------------------
+Any element in an HTML template can be controlled using a 'structural directives'
+The two most commonly used structural directives are:
+- *ngFor which is great for iterating content for lists, tables etc.
+- *ngIf  which controls conditional content
+Performance Note:
+- use *ngIf when the conditional content is rarely used
+- use [hidden]='flag' if the content needs to appear and disappear regularly
+
+Component @Input and @Output
+----------------------------
+Components are a really good idea for any non-trivial SPA
+You can pass data in to a component as @Input (from it's parent)
+Events can go from a component to its parent as @Output (always an EventEmmitter)
+In the coding example we will:
+- Take a complex data model from the parent
+- Use @Input to pass that data into the child component
+- Loop over the data to show it nicely
+- Handle 'click' events in the child, passing the event up to the parent
+- Finally, in the parent, we will show which data member was clicked in the child component
+Here's a data structure to go in app.component.ts:
+    portfolio = [
+        {'ticker':'AAPL', 'qty':10, 'price':100},
+        {'ticker':'AMAZN', 'qty':20, 'price':200},
+        {'ticker':'C', 'qty':30, 'price':300},
+        {'ticker':'FB', 'qty':40, 'price':400},
+        {'ticker':'TSLA', 'qty':50, 'price':500}
+    ]
+- We will also generate a new component: ng g c portfolio

@@ -1,0 +1,32 @@
+Managing Angular Projects
+=========================
+You can add additional npm packages to a project e.g:
+- ng add @ng-bootstrap/ng-bootstrap
+You can add new components to a project e.g:
+- ng generate component my-stocks
+- ng g c my-stocks  (shorthand does the same thing)
+You will then have a folder called my-stocks containing:
+    my-stocks.component (.html .ts etc.)
+- The component is decorated with @Component
+- The component class will be called' MyStocksComponent'
+- There is a reference to the HTML template 'my-stocks.component.html'
+- All components will be automatically imported into NgModule (app.module.ts)
+You can add a service to a project, e.g:
+- ng generate service get-stocks
+- ng g s get-stocks (same thing in shorthand)
+You will then have a file called 'get-stock.service.ts'
+- Services have no HTML template since they are not concerned with display
+- The service class you generated will be called 'GetStocksService'
+- All services are decorated with @Injectable
+- Services do not appear in NgModule (app.module.ts)
+
+Production and Deployment
+-------------------------
+ng build will create a production build of your app in the 'dist' folder 
+This is a production build of your entire app, ready to be deployed
+It's worth looking at the deployed 'index.html' to check that the 'base-href' is what you want
+
+Cross-Origin-Resource-Sharing (CORS)
+------------------------------------
+- If you deploy your front-end app to the same base URL as your REST API there is no CORS problem
+- But if you deploy you REST API to one URL and your web front end to another, you have CORS

@@ -1,0 +1,71 @@
+<section>
+  <button (click)='getSwapiData()'>Go</button>
+  <aside *ngIf='swapiReport'>
+    <h2>{{swapiReport.name}}</h2>
+    <!-- starships -->
+    <h3 *ngIf="swapiReport.starship_class">
+      Model: {{swapiReport.model}}
+      Manufacturer: {{swapiReport.manufacturer}}
+      Max Speed: {{swapiReport.max_atmosphering_speed}}
+      Class: {{swapiReport.starship_class}}
+    </h3>
+    <!-- species -->
+    <h3 *ngIf="swapiReport.designation">
+      Classification: {{swapiReport.classification}}
+      Average Lifespan: {{swapiReport.average_lifespan}}
+      language: {{swapiReport.language}}</h3>
+    <!-- planets -->
+    <h3 *ngIf="swapiReport.climate">
+      Climate: {{swapiReport.climate}}
+      Terrain: {{swapiReport.terrain}}
+      Population: {{swapiReport.population}}</h3>
+    <!-- people -->
+    <span *ngIf="swapiReport.eye_color">
+      <h3>
+        Eyes: {{swapiReport.eye_color}}
+        Hair: {{swapiReport.hair_color}}
+        Height:{{swapiReport.height}}</h3>
+      <h4>Home world <a [href]='swapiReport.homeworld'>{{swapiReport.homeworld}}</a></h4>
+    </span>
+    <!-- vehicles -->
+    <h3 *ngIf="swapiReport.vehicle_class">
+      Model: {{swapiReport.model}}
+      Manufacturer: {{swapiReport.manufacturer}}
+      Crew: {{swapiReport.max_atmosphering_speed}}
+      Class: {{swapiReport.vehicle_class}}
+    </h3>
+    <h4 *ngIf="swapiReport.films">Films</h4>
+    <ul>
+      <li *ngFor="let film of swapiReport.films">
+        <a href='#' (click)='getFilmDetails(film)'>{{film}}</a>
+      </li>
+    </ul>
+  </aside>
+  <aside *ngIf='filmDetails.episode_id'>
+    <h4>Film Details</h4>
+    <!-- There is a keyvalue pipe which allows ngFor iteration over objects -->
+    <dl>
+      <span *ngFor='let item of filmDetails |keyvalue'>
+        <dt>{{item.key}}</dt>
+        <dd>{{item.value}}</dd>
+      </span>
+    </dl>
+
+        <h5>
+          Title {{filmDetails.title}}<br/>
+          Episode {{filmDetails.episode_id}}<br/>
+          Director {{filmDetails.director}}<br/>
+          Producer {{filmDetails.producer}}<br/>
+          Released {{filmDetails.release_date}}
+        </h5>
+        <app-crawl
+         [crawlTitle]='filmDetails.title'
+         [crawlEpisode]='filmDetails.episode_id'
+         [crawlText]='filmDetails.opening_crawl'
+         ></app-crawl>
+  </aside>
+  <hr />
+  <!-- Monitors for debug only -->
+  <!-- <pre>Film Details: {{filmDetails |json}}</pre>
+  <pre>Returned Data: {{swapiReport |json}}</pre> -->
+</section>

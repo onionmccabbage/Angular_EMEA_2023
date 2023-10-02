@@ -1,0 +1,19 @@
+<!-- we need an HTML form if we wish to use validation -->
+<!-- as soon as we use a <form> tag, Angular creates an instance of an 'NgForm' -->
+<form>
+<!-- we will need 'category' and 'id' -->
+    <label for="cats">Category: </label>
+    <select id="cats" name="cats" [(ngModel)]="category">
+        <option *ngFor="let cat of categories">{{cat}}</option>
+    </select> 
+    <label for="cat_id">ID: </label>
+    <input id="cat_id" name="cat_id" ngDebounce
+    [(ngModel)]="category_id"
+    placeholder="enter ID"
+    required
+    type="number" min="1" max="10" #cat_id="ngModel" />
+    <button (click)="handleForm()" >Go</button>
+</form>
+<hr/>
+<!-- use the JSON pipe for easy visualization -->
+<pre>{{dataModel|json}}</pre>

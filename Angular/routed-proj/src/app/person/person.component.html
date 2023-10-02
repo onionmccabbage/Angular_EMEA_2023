@@ -1,0 +1,7 @@
+<section>
+    <h3>This is the 'Person' page</h3>
+    <!-- ngIf will create and destroy the displayed element -->
+    <p *ngIf="name" >Welcome {{name}} age {{age}}</p>
+    <!-- CSS-binding will simply hide the element -->
+    <p [hidden]="!name" >Welcome {{name}} age {{age}}</p>
+</section>
