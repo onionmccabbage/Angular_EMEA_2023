@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.css']
 })
+
 export class PortfolioComponent {
   portfolio = [
     {'ticker':'AAPL', 'qty':10, 'price':100},
