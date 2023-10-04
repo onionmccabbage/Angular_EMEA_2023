@@ -1,1 +1,13 @@
-<p>my-stocks works!</p>
+<section>
+    <h3>My Stocks</h3>
+    <!-- it can help with debugging if we show our state -->
+    <p>{{stocks}}</p>
+    <!-- we may need to iterate over a colectyion -->
+<!-- angular has template directives. They ALL include an astersik -->
+    <ul>
+        <!-- the *ngFor applies to the li tag -->
+        <li *ngFor="let stock of stocks">
+            {{stock}}
+        </li>
+    </ul>
+</section>

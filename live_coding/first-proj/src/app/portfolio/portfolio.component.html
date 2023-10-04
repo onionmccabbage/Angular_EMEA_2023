@@ -1,1 +1,25 @@
-<p>portfolio works!</p>
+<aside>
+    <h3>Here is our Portfolio</h3>
+    <table>
+        <thead>
+            <!-- include <tr> for validation (acessibility) -->
+            <tr>
+                <th>Ticker</th><th>Quantity</th><th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of portfolio">
+                <td>{{item.ticker}}</td>
+                <td>{{item.qty}}</td>
+                <td>{{item.price}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <!-- footer goes here -->
+        </tfoot>
+    </table>
+    <!-- for debug.... -->
+    <!-- the json pipe will take ANY structure
+       and serialize it for display -->
+    <pre>{{portfolio |json}}</pre>
+</aside>
