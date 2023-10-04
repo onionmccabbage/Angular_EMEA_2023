@@ -14,4 +14,9 @@ export class PortfolioComponent {
     {'ticker':'FB', 'qty':40, 'price':400},
     {'ticker':'TSLA', 'qty':50, 'price':500}
   ]
+  // with thanks to Jaszon for code solution
+  get portfolioKeys() {
+    return Object.keys(this.portfolio[0]);
+  } 
 }
+

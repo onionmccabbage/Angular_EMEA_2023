@@ -4,7 +4,9 @@
         <thead>
             <!-- include <tr> for validation (acessibility) -->
             <tr>
-                <th>Ticker</th><th>Quantity</th><th>Price</th>
+                <!-- <th>Ticker</th><th>Quantity</th><th>Price</th> -->
+                <th *ngFor="let key of portfolioKeys">{{key}}</th>
+    <tr *ngFor="let p of portfolio"> 
             </tr>
         </thead>
         <tbody>
