@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from "@angular/core"
 
 @Component({
   selector: 'app-my-stocks',
@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
 })
 export class MyStocksComponent {
   // properties of this component
-  stocks = ['AAPL', 'AMAZN', 'C', 'FB', 'TSLA']
+  // @Input() stocks:string[] = [] // sensible default
+  @Input() stocks:Array<string> = [] // sensible default
+  @Input() whichCat = '' // Typescript infers this is a string
 }

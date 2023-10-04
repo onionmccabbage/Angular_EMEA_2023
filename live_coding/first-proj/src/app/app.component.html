@@ -19,6 +19,7 @@
     <p>The cat is called {{catName}}</p>
     <!-- we can instantiate our custom components -->
     <app-portfolio></app-portfolio>
-    <app-my-stocks></app-my-stocks>
+    <!-- [stocks] is in app.component.ts and 'stocks' is in my-stocks.ts -->
+    <app-my-stocks [stocks]='stocks' [whichCat]="catName"></app-my-stocks>
   </section>
 </article>

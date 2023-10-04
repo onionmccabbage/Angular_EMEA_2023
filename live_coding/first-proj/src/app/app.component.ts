@@ -6,14 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // properties of this component
+  // properties of this component - can be ANY structure, simple or complex
   title = 'Coffee Break';
   drink = 'Latte';
   i = 'https://placekitten.com/120/64';
   a = 'random kitten';
   t = 'now thats clever';
   catName = 'Mildred'
-  
+  // we often choose to have the 'state' at a high-level component
+  stocks = ['AAPL', 'AMAZN', 'C', 'FB', 'TSLA']
 
 
   // methods of this component
