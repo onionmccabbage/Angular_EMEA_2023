@@ -13,7 +13,7 @@ There will be a load of assets in 'node_modules'
 Your work will go in 'src/app'
 Then get your new project running in development mode:
     ng serve  
-This is a 'watching server' so any chages to your code are reflected in the browser.
+This is a 'watching server' so any changes to your code are reflected in the browser.
 By default it's always localhost:4200
 From here on, your workflow is: make code edits, see results in browser, repeat
 The default Angular application includes links to documentation, DevTools and some cli statements
