@@ -20,6 +20,8 @@
             <!-- footer goes here -->
         </tfoot>
     </table>
+    <hr>
+    <app-detail *ngFor="let item of portfolio" [detail]="item"></app-detail>
     <!-- for debug.... -->
     <!-- the json pipe will take ANY structure
        and serialize it for display -->
