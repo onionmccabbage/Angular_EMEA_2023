@@ -1,8 +1,16 @@
 <article>
-  <!-- this is a tempalte for our component -->
+  <!-- this is a template for our component -->
   <section>
     <h2>Welcome to Angular</h2>
+    <!-- use {{}} for direct template content -->
     <p>{{title}} drink: {{drink}} one plus two is {{1+2}}</p>
-
+    <!-- [] let us inject data as attributes -->
+    <!-- we COULD use {{}} -->
+    <img [src]="i" [alt]="a" [title]="t" />
+    <hr/>
+    <!-- one way EVENT binding OUT OF the button component -->
+    <!-- anythong with $ at the start is part of Angular -->
+    <!-- we can choose to attach our own data packets to this custom event -->
+    <button (click)="handleStuff($event)" >Feed Cats</button>
   </section>
 </article>
