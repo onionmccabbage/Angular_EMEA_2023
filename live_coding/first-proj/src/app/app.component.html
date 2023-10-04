@@ -3,6 +3,9 @@
   <!-- this is a template for our component -->
   <section>
     <h2>Welcome to Angular</h2>
+    <!-- here we listen for a custom event called 'teatime' -->
+    <app-child *ngIf="cookieFlag=='not agreed'"  (teatime)="handleTeatime($event)" ></app-child>{{cookieFlag}}
+    {{receivedData |json}}
     <!-- use {{}} for direct template content -->
     <p>{{title}} drink: {{drink}} one plus two is {{1+2}}</p>
     <!-- [] let us inject data as attributes -->

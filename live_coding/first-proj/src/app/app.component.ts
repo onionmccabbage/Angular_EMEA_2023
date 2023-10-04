@@ -15,12 +15,17 @@ export class AppComponent {
   catName = 'Mildred'
   // we often choose to have the 'state' at a high-level component
   stocks = ['AAPL', 'AMAZN', 'C', 'FB', 'TSLA']
-
+  cookieFlag = 'not agreed'
+  receivedData = {}
 
   // methods of this component
   handleStuff(e:any){ // typescript needs this
     // back-ticks let us interpolate JS values 
     console.log(`something happened ${e}`)
+  }
+  handleTeatime(e:Event){
+    this.cookieFlag= 'agree'
+    this.receivedData = e
   }
 
   // there are several ways to write methods

@@ -8,6 +8,7 @@ import { MyStocksComponent } from './my-stocks/my-stocks.component';
 import { DetailComponent } from './detail/detail.component';
 import { FootComponent } from './foot/foot.component';
 import { HeadComponent } from './head/head.component';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HeadComponent } from './head/head.component';
     MyStocksComponent,
     DetailComponent,
     FootComponent,
-    HeadComponent
+    HeadComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,
