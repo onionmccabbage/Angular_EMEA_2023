@@ -12,7 +12,7 @@ export class AppComponent {
   i = 'https://placekitten.com/120/64';
   a = 'random kitten';
   t = 'now thats clever';
-
+  catName = 'Mildred'
   stocks = ['AAPL', 'AMAZN', 'C', 'FB', 'TSLA']
   portfolio = [
     {'ticker':'AAPL', 'qty':10, 'price':100},
@@ -22,11 +22,13 @@ export class AppComponent {
     {'ticker':'TSLA', 'qty':50, 'price':500}
   ]
 
-
-
-  // methids of this component
+  // methods of this component
   handleStuff(e:any){ // typescript needs this
+    // back-ticks let us interpolate JS values 
     console.log(`something happened ${e}`)
   }
 
+  // there are several ways to write methods
+  handleOtherStuff = function(){}
+  anotherFn = ()=>{}
 }

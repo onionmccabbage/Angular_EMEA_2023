@@ -12,5 +12,10 @@
     <!-- anythong with $ at the start is part of Angular -->
     <!-- we can choose to attach our own data packets to this custom event -->
     <button (click)="handleStuff($event)" >Feed Cats</button>
+    <hr/>
+    <!-- ngModel is automatiocally available when we have the FormsModule -->
+    <!-- Angular calls this banana in a box [()]-->
+    <input [(ngModel)]="catName" placeholder="Cat Name" /><br/>
+    <p>The cat is called {{catName}}</p>
   </section>
 </article>
