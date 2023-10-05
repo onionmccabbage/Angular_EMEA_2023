@@ -9,9 +9,13 @@
      this makes the form very efficient
     -->
     <form>
+      <!-- a <select> element for the category -->
+        <select name="cats" [(ngModel)]="whichCat">
+          <option *ngFor="let cat of categories">{{cat}}</option>
+        </select>
       <input type="number" placeholder="which ID"
       name="photo_id" #photo_id="ngModel"
-      required min="1" max="5000" [(ngModel)]="whichID"/>
+      required min="1" max="10" [(ngModel)]="whichID"/>
       <!-- if a <button> is inside a <form> it behaves as <submit> -->
       <button (click)="handleGetOnePhoto($event)" >get one photo</button>
     </form>

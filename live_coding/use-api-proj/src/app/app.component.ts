@@ -10,6 +10,10 @@ export class AppComponent implements OnInit  {
   title = 'use-api-proj';
   // we need to revisit the 'any'
   photos: Array<any> = []
+
+  // here are the permitted categories forour end-point API
+  categories = ['photos', 'users', 'albums', 'todos', 'posts']
+  whichCat = 'photos'
   whichID = 42 // this is now a property of the class (rather than local to any function)
   onePhoto = {} // typescript will infer the type as an object
   // we must instantiate our service in the constructor

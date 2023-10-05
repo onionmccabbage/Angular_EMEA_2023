@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+// Angular provides Observable via RxJS
+import { Observable } from 'rxjs' // this is reolved by the tool-chain
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,23 @@ export class TypicodeService {
     // Represent the state of our request (REST)
     const url = `https://jsonplaceholder.typicode.com/photos/${n}`
     // console.log(url)
-    return this.http.get(url)
+    return this.http.get(url) // dry...
   }
+
+  // here is a metod to retrieve both a category and an id
+  getCatAndId(c='photos', n=1){ // sensible defaults
+    const url = `https://jsonplaceholder.typicode.com/${c}/${n}`
+    // its a good idea to use try-catch
+    try{
+      return this.http.get(url)
+    }
+    catch(err){
+      // we would probably send the details to a back-end API for logging
+      return new Observable()
+    }
+  }
+
+
+
+
 }
