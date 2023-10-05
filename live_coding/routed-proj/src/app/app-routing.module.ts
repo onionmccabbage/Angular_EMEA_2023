@@ -10,6 +10,9 @@ const routes: Routes = [
   // good idea to have a default redirect for no specific URL
   {path:'', redirectTo:'info', pathMatch:'full'},
   {path:'details', component:DetailsComponent},
+  // here we will route if there is a URL parameter called 'name'
+  {path:'details/:name', component:DetailsComponent},
+  {path:'details', component:DetailsComponent},
   {path:'about', component:AboutComponent},
   {path:'info', component:InfoComponent},
   // if no other path matches, then do this...
