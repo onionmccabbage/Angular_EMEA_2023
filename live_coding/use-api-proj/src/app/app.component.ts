@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TypicodeService } from './typicode.service';
 
 @Component({
@@ -6,17 +6,15 @@ import { TypicodeService } from './typicode.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit  {
   title = 'use-api-proj';
   // we need to revisit the 'any'
   photos: Array<any> = []
   // we must instantiate our service in the constructor
-  constructor(private typicode: TypicodeService) {
-
-  }
+  constructor(private typicode: TypicodeService) {}
 
   // this method ALWAYS runs when this component is instantiated
-  ngOnInit() {
+  ngOnInit() { // life-cycle events
     // make a call for the data
     this.typicode.getAllPhotos().subscribe(
       this.handlePhotos()
