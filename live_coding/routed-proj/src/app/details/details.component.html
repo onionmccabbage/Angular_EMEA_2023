@@ -1,1 +1,8 @@
-<p>details works!</p>
+<!-- here are details of a 'person' -->
+<section>
+    <h3>This is the Details page</h3>
+    <!-- this is preferable iff we may only occasionally show this element -->
+    <p *ngIf="name">Welcome {{name}}</p>
+    <!-- this is preferable if we will often show/hide this element -->
+    <p [hidden]="!age" >Age is {{age}}</p>
+</section>

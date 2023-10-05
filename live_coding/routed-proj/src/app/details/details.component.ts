@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent {
-
+  name = ''
+  age = 0
 }
