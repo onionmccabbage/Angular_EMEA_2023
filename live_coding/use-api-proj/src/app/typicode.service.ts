@@ -20,6 +20,7 @@ export class TypicodeService {
   getOnePhoto(n=42){ // n wil be the id (sensible default)
     // Represent the state of our request (REST)
     const url = `https://jsonplaceholder.typicode.com/photos/${n}`
+    // console.log(url)
     return this.http.get(url)
   }
 }

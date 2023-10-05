@@ -1,5 +1,11 @@
 <article>
   <h2>Receiving data from an API</h2>
   <!-- handy for debugging -->
+  <!-- user will click a button to get one photo -->
+  <button (click)="handleGetOnePhoto($event)" >get one photo</button>
+  <pre>{{onePhoto |json}}</pre>
+  <hr/>
   <pre>{{photos |json}}</pre>
+
+
 </article>
