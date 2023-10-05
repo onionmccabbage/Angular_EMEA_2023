@@ -42,4 +42,17 @@ export class AppComponent implements OnInit  {
     )
   }
 
+  // handle both category and ID
+  handleStuff(){
+    this.typicode.getCatAndId(this.whichCat, this.whichID)
+      .subscribe(
+        // its a good idea to have a named function, but we can just use a local fn
+        (r:any)=>{
+          // probably considionaly populate a class (Photo class, Usrf class etc)
+          this.photos = r // need improving
+        }
+      )
+
+  }
+
 }

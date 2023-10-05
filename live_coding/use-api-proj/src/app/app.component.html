@@ -17,7 +17,7 @@
       name="photo_id" #photo_id="ngModel"
       required min="1" max="10" [(ngModel)]="whichID"/>
       <!-- if a <button> is inside a <form> it behaves as <submit> -->
-      <button (click)="handleGetOnePhoto($event)" >get one photo</button>
+      <button (click)="handleStuff()" >get one photo</button>
     </form>
 
   <pre>{{onePhoto |json}}</pre>
