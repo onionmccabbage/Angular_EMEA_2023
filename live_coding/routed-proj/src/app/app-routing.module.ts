@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'details', component:DetailsComponent},
   // here we will route if there is a URL parameter called 'name'
   {path:'details/:name', component:DetailsComponent},
-  {path:'details', component:DetailsComponent},
+  {path:'details/:name/:age', component:DetailsComponent},
   {path:'about', component:AboutComponent},
   {path:'info', component:InfoComponent},
   // if no other path matches, then do this...
