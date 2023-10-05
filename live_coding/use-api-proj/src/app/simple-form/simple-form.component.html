@@ -1,9 +1,12 @@
 <article>
     <!-- see https://angular.io/guide/form-validation -->
     <form>
-        <input type="text" id="name" name="name" required min="4" appForbiddenName="bob" [(ngModel)]="hero.name"
+        <input type="text" id="name" name="name" required 
+        min="4" appForbiddenName="bob" [(ngModel)]="hero.name"
             #name="ngModel">
-        <input type="number" id="age" name="age" required min="0" max="100" [(ngModel)]="hero.age" #age="ngModel">
+        <input type="number" id="age" name="age" 
+            required min="0" max="100" [(ngModel)]="hero.age" 
+            #age="ngModel">
         <section *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
             <aside *ngIf="name.errors?.['required']">
                 Name is required.
