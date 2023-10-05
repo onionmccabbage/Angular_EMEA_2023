@@ -1,0 +1,31 @@
+<article>
+    <!-- see https://angular.io/guide/form-validation -->
+    <form>
+        <input type="text" id="name" name="name" required min="4" appForbiddenName="bob" [(ngModel)]="hero.name"
+            #name="ngModel">
+        <input type="number" id="age" name="age" required min="0" max="100" [(ngModel)]="hero.age" #age="ngModel">
+        <section *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+            <aside *ngIf="name.errors?.['required']">
+                Name is required.
+            </aside>
+            <aside *ngIf="name.errors?.['minlength']">
+                Name must be at least 4 characters long.
+            </aside>
+            <aside *ngIf="name.errors?.['forbiddenName']">
+                Name cannot be Bob.
+            </aside>
+        </section>
+        <section *ngIf="age.invalid && (age.dirty || age.touched)">
+            <aside *ngIf="age.errors?.['required']">
+                Age is required
+            </aside>
+            <aside *ngIf="age.errors?.['min']">
+                Age must be zero or more
+            </aside>
+            <aside *ngIf="age.errors?.['max']">
+                Age cannot exceed 100
+            </aside>
+        </section>
+        <button>Go</button>
+    </form>
+</article>
