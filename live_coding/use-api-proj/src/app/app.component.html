@@ -2,7 +2,20 @@
   <h2>Receiving data from an API</h2>
   <!-- handy for debugging -->
   <!-- user will click a button to get one photo -->
-  <button (click)="handleGetOnePhoto($event)" >get one photo</button>
+
+  <!-- we don't need a <form> tag... -->
+    <!-- when you use a <form> tag in Angular,
+      you get an NgForm (with associated functionality ) 
+     this makes the form very efficient
+    -->
+    <form>
+      <input type="number" placeholder="which ID"
+      name="photo_id" #photo_id="ngModel"
+      required min="1" max="5000" [(ngModel)]="whichID"/>
+      <!-- if a <button> is inside a <form> it behaves as <submit> -->
+      <button (click)="handleGetOnePhoto($event)" >get one photo</button>
+    </form>
+
   <pre>{{onePhoto |json}}</pre>
   <hr/>
   <pre>{{photos |json}}</pre>
